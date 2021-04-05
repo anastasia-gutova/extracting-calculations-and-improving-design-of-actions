@@ -23,14 +23,12 @@ function tableRowsProcessing() {
         if ($(this).val().indexOf('.') == 0 || $(this).val().length == 0) {
           $(this).val("0" + $(this).val());
           checkSumTimeRow(num - 1);
-          makeSaveWarning();
         }
       });
       $(el).keyup(calculateFunction(rowIndex, column));
     });
     if (num != 3 && num != 5) {
       checkSumTimeRow(num);
-      makeSaveWarning();
     }
   });
 }
@@ -66,7 +64,6 @@ function calculateFunction(rowIndex, column) {
       checkSumTimeRow(2);
       checkSumTimeRow(4);
     }
-    makeSaveWarning();
   }
 }
 
@@ -78,27 +75,6 @@ function changeInputColor(el, value) {
   } else {
     $(el).css('background-color', "");
     $(el).css('color', "");
-  }
-}
-
-function makeSaveWarning() {
-  var isWarning = false;
-  $("[id='reportTableData'] td").each(function (index, el) {
-    if ($(el).css('background-color') == "#ffa4a4") {
-      isWarning = true;
-    }
-  });
-  $("[id='reportTableData'] input").each(function (index, el) {
-    if ($(el).css('background-color') == "#ffa4a4") {
-      isWarning = true;
-    }
-  });
-  if (isWarning) {
-    SaveData.style.display = 'none';
-    ReqWarning.style.display = 'inline';
-  } else {
-    SaveData.style.display = 'inline';
-    ReqWarning.style.display = 'none';
   }
 }
 
